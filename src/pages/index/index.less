@@ -1,0 +1,109 @@
+.swiper-wrap {
+  position: relative;
+  //background-color: #f00;
+  .slide-image {
+    width: 100%;
+    min-height: 300rpx;
+  }
+  .swiper-dot {
+    position: absolute;
+    bottom: 20rpx;
+    right: 12rpx;
+    z-index: 99;
+    //background-color: #ff0;
+    display: flex;
+    view {
+      width: 20rpx;
+      height: 20rpx;
+      background-color: rgba(0,0,0,0.5);
+      margin-left: 8rpx;
+      transition: all 0.5s;
+    }
+    .active {
+      background-color: #000;
+    }
+  }
+}
+
+.top-title {
+  font-size: 30rpx;
+  color: #000;
+  line-height: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  margin: 20rpx;
+  margin-top: 40rpx;
+  position: relative;
+}
+.top-title::before, .top-title::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 2rpx;
+  background-color: #eee;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.top-title::before {
+  left: 0;
+}
+.top-title::after {
+  right: 0;
+}
+
+.info-wrap {
+  padding:10rpx 20rpx;
+  .info-user {
+    display: flex;
+    image {
+      width: 83rpx;
+      height: 83rpx;
+      border-radius: 50%;
+    }
+    > view {
+      margin-left: 20rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      view:nth-child(1) {
+        color: #333;
+        font-size: 28rpx;
+      }
+      view:nth-child(2) {
+        color: #999;
+        font-size: 24rpx;
+      }
+    }
+  }
+  .info-content {
+    line-height: 50rpx;
+    color: #333;
+    font-size: 24rpx;
+  }
+  .info-img {
+    display: flex;
+    flex-wrap: wrap;
+    image {
+      margin: 4rpx;
+      width: 223rpx;
+      height: 168rpx;
+    }
+  }
+  .info-comment {
+    line-height: 60rpx;
+    display: flex;
+    justify-content: space-between;
+    view {
+      font-size: 24rpx;
+      color: #333;
+    }
+    .icon-dianzan11::before {
+      margin-right: 10rpx;
+      font-size: 50rpx;
+      color: #999;
+    }
+    .has-zan, .has-zan::before {
+      color: #4691ff;
+    }
+  }
+}

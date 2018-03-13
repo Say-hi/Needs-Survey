@@ -1,0 +1,36 @@
+.survey-wrap {
+  border-top: 20rpx solid #fbfbfb;
+  padding: 20rpx;
+  position: relative;
+  overflow: hidden;
+  view:nth-child(1) {
+    font-size: 32rpx;
+    color: #000;
+    line-height: 50rpx;
+    font-weight: 700;
+  }
+  view:nth-child(2) {
+    font-size: 28rpx;
+    color: #999;
+    line-height: 60rpx;
+  }
+}
+
+.survey-wrap:nth-last-child(2) {
+  border-bottom: 20rpx solid #fbfbfb;
+}
+
+.has-choose::after {
+  position: absolute;
+  content: '已选购';
+  top: 0;
+  right: 0;
+  width: 200rpx;
+  font-size: 24rpx;
+  text-align: center;
+  transform: rotate(35deg) translate(60rpx, -16rpx);
+  color: #fff;
+  font-weight: 700;
+  background-color: #4691ff;
+  padding: 10rpx 20rpx;
+}

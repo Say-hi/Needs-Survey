@@ -1,0 +1,38 @@
+<import src="../../wxParse/wxParse"></import>
+<view class="top-title">
+  <view class="t-t-t">
+    <view>{{ info.articletitle }}</view>
+    <view>{{ info.createDate }}</view>
+  </view>
+  <view>
+    <template is="wxParse" data="{{ wxParseData: wpContent.nodes }}"></template>
+  </view>
+  <!--<view class="info-content">{{ info.content }}</view>-->
+  <!--<view class="info-img">-->
+    <!--<image catchtap="showImg" data-inindex="{{ imgIndex }}" wx:for="{{ info.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}" wx:key="*12"></image>-->
+  <!--</view>-->
+</view>
+<view class="bottom">
+  <view class="b-wrap" wx:for="{{ commentArr }}" wx:key="*76">
+    <image src="{{ item.src || '../../images/user.png' }}"></image>
+    <view class="b-c">
+      <view class="b-name">{{ item.username }}</view>
+      <view class="b-content">{{ item.content }}</view>
+      <view class="b-time">
+        <view>{{ item.time }}</view>
+        <view wx:if="{{ item.userid != user.id || !!item.numberReply }}" catchtap="userReply" data-index="{{ index }}" class="b-t-r">{{ item.numberReply || '我要' }}回复</view>
+        <view wx:if="{{ item.userid == user.id }}" catchtap="userDel" data-index="{{ index }}" class="b-t-r">删除</view>
+      </view>
+    </view>
+    <view catchtap="diazan" data-id="{{ item.id }}" data-index="{{ index }}" class="iconfont icon-dz {{ item.islike == 1 ? 'has-zan' : ''}}">{{ item.numberLike || 0 }}</view>
+  </view>
+  <view class="tac f30 c999" wx:if="{{ !commentArr || commentArr.length < 1 }}">还没有人评论哦~，您快来评论吧</view>
+  <view class="zanwei"></view>
+</view>
+<view class="bottom-input">
+  <input bindconfirm="send" confirm-type="send" bindfocus="getIn" bindblur="getOut" placeholder-class="input-holder" focus="{{ focus }}" placeholder="{{ replyText }}" data-type="reply" bindinput="inputValue" value="{{ reply }}"/>
+  <view class="{{ focus || inputIn ? 'send-active':'' }}" catchtap="send">发送</view>
+</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

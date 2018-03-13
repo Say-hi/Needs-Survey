@@ -1,0 +1,6 @@
+<view class="feed-top">问题描述或建议</view>
+<textarea placeholder-class="text-holder" bindinput="inputValue" data-type="feedback" placeholder="请在此描述您遇到的问题或建议"></textarea>
+<view class="send-btn" catchtap="sendFeed">发送</view>
+<!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

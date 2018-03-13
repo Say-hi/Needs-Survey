@@ -1,0 +1,57 @@
+<import src="../../wxParse/wxParse"></import>
+<view wx:if="{{ item.voteoptionList }}" class="info-wrap" catchtap="goDetail" data-id="{{ item.id }}" wx:for="{{ infoArr }}" wx:key="*6">
+  <view class="info-user">
+    <image src="{{ item.img || '../../images/user.png'}}"></image>
+    <view>
+      <view>{{ item.name || '管理员' }}</view>
+      <view>{{ item.createDate }}</view>
+    </view>
+  </view>
+  <view>
+    <template is="wxParse" data="{{ wxParseData: item.node.nodes }}"></template>
+  </view>
+  <!--<view class="info-content">{{ item.content }}</view>-->
+  <!--<view class="info-img">-->
+    <!--<image catchtap="showImg" data-outindex="{{ index }}" wx:key="*7" data-inindex="{{ imgIndex }}" wx:for="{{ item.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}"></image>-->
+  <!--</view>-->
+  <view class="info-comment">
+    <view>共{{ item.numberComment || 0 }}条评论</view>
+    <!--<view catchtap="diazan" data-index="{{ index }}" data-id="{{ item.id }}" class="iconfont icon-dianzan11 {{ item.zan ? 'has-zan':'' }}">{{ item.star }}</view>-->
+  </view>
+  <view class="vote-wrap">
+    <view class="vote" wx:if="{{ oIndex < 3 }}" wx:for="{{ item.voteoptionList }}" wx:key="*789" wx:for-index="oIndex" wx:for-item="oItem">
+      <view class="vote-t">{{ oItem.voteoptionid }}</view>
+        <view class="vote-s">
+          <view class="{{ oIndex == 0 ? 'vote-agree' : oIndex == 1 ? 'vote-oppose' : 'vote-abstention' }}" style="width: {{ oItem.number != 0 ? ((586 * (oItem.number || 0)) / ((item.voteoptionList[0].number || 0) * 1 + (item.voteoptionList[1].number || 0) * 1 + (item.voteoptionList[2].number || 0) * 1))+ 'rpx' : '0px'}};"></view>
+        </view>
+        <view class="vote-r">{{ oItem.number || 0 }}</view>
+      </view>
+
+      <!--<view class="vote">-->
+      <!--<view class="vote-t">支持票</view>-->
+      <!--<view class="vote-s">-->
+        <!--<view class="vote-agree" style="width: {{ (item.agree != 0 && item.agree) ? ((586 * item.agree) / (item.agree * 1 + item.oppose * 1 + item.abstention))+ 'rpx' : '0px'}};"></view>-->
+      <!--</view>-->
+      <!--<view class="vote-r">{{ item.agree || 0 }}</view>-->
+    <!--</view>-->
+    <!--<view class="vote">-->
+      <!--<view class="vote-t">反对票</view>-->
+      <!--<view class="vote-s">-->
+        <!--<view class="vote-oppose" style="width: {{ (item.oppose != 0 && item.oppose) ?(586 * item.oppose) / (item.agree * 1 + item.oppose * 1 + item.abstention)+ 'rpx' : '0px' }};"></view>-->
+      <!--</view>-->
+      <!--<view class="vote-r">{{ item.oppose || 0 }}</view>-->
+    <!--</view>-->
+    <!--<view class="vote">-->
+      <!--<view class="vote-t">弃票</view>-->
+      <!--<view class="vote-s">-->
+        <!--<view class="vote-abstention" style="width: {{ (item.abstention != 0 && item.abstention) ?(586 * item.abstention) / (item.agree * 1 + item.oppose * 1 + item.abstention)+ 'rpx' : '0px'}};"></view>-->
+      <!--</view>-->
+      <!--<view class="vote-r">{{ item.abstention || 0 }}</view>-->
+    <!--</view>-->
+  </view>
+</view>
+<view wx:if="{{ infoArr.length < 1 || !infoArr }}" class="tac f30 c999">--- 暂无征集意见 ---</view>
+<view class="base-line"></view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

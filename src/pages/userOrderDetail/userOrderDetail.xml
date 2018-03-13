@@ -1,0 +1,18 @@
+<view class="detail-wrap" wx:for="{{ detailArr }}" wx:key="*78">
+  <image mode="widthFix" src="{{ item.commodityimage }}"></image>
+  <view class="d-c">
+    <view>{{ item.commodityname }}</view>
+    <view>{{ item.commodityweight || '未知' }}</view>
+    <view>￥　{{ item.price }}</view>
+  </view>
+  <view class="d-a">
+    ×{{ item.number }}
+  </view>
+</view>
+<view class="zanwei"></view>
+<view class="d-b">
+  <view catchtap="goSend">导出表格</view>
+</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

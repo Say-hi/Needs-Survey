@@ -1,0 +1,24 @@
+<!-- 可用组件：https://mp.weixin.qq.com/debug/wxadoc/dev/component/ -->
+<view class="login">
+  <view class="l-t">员工需求调查</view>
+  <!--<view class="container">-->
+    <!--<view class="wave"></view>-->
+    <!--<view class="wave1"></view>-->
+    <!--<view class="wave2"></view>-->
+  <!--</view>-->
+  <image class="login-bg" mode="widthFix" src="../../images/login-bg.png"></image>
+</view>
+<view class="login-input">
+  <view class="login-input-account iconfont icon-renyuan">
+    <input placeholder-style="color: #cbcbcb;" bindinput="inputValue" data-type="loginInput" value="{{ loginInput }}" placeholder="请输入您的账号"/>
+  </view>
+  <view class="login-input-pwd iconfont icon-suo">
+    <input placeholder-style="color: #cbcbcb;" type="password" bindinput="inputValue" value="{{ pwd }}" data-type="pwd" placeholder="请输入您的密码"/>
+  </view>
+</view>
+<view catchtap="loginBtn" data-type="login" class="login-btn">登陆</view>
+<view catchtap="loginBtn" data-type="register" class="login-btn register">注册</view>
+<button wx:if="{{ login }}" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权本小程序</button>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

@@ -1,0 +1,31 @@
+<!-- 可用组件：https://mp.weixin.qq.com/debug/wxadoc/dev/component/ -->
+<!--<view class="login">-->
+  <!--<view>员工需求调查</view>-->
+  <!---->
+<!--</view>-->
+<view class="login-input">
+  <view class="login-input-account iconfont icon-renyuan {{ errIndex == 1 ? 'shake' : '' }}">
+    <input placeholder-style="color: #cbcbcb;" bindinput="inputValue" data-type="name" placeholder="请输入您的姓名"/>
+  </view>
+  <view class="login-input-pwd iconfont icon-shenfenzheng {{ errIndex == 2 ? 'shake' : '' }}">
+    <input placeholder-style="color: #cbcbcb;" type="idcard" bindinput="inputValue" data-type="idCard" placeholder="请输入身份证号码"/>
+  </view>
+  <view class="login-input-pwd iconfont icon-shoujihao {{ errIndex == 3 ? 'shake' : '' }}">
+    <input placeholder-style="color: #cbcbcb;" type="number" maxlength="11" bindinput="inputValue" data-type="phone" placeholder="请输入您的手机号码"/>
+  </view>
+  <view class="login-input-pwd iconfont icon-pwd {{ errIndex == 4 ? 'shake' : '' }}">
+    <input placeholder-style="color: #cbcbcb;" type="password" bindinput="inputValue" data-type="pwd" placeholder="请输入您的密码"/>
+  </view>
+  <view class="login-input-pwd iconfont icon-pwd {{ errIndex == 5 ? 'shake' : '' }}">
+    <input placeholder-style="color: #cbcbcb;" type="password" bindinput="inputValue" data-type="pwd2" placeholder="请再次确认您的密码"/>
+  </view>
+  <view class="check-pwd" wx:if="{{ !!same }}">
+    *输入密码不一致,请检查*
+  </view>
+</view>
+<view catchtap="loginBtn" data-type="login" class="login-btn">注册</view>
+<image class="login-bg" mode="widthFix" src="../../images/register-bg.png"></image>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>
+<!--<view catchtap="loginBtn" data-type="register" class="login-btn register">注册</view>-->

@@ -1,0 +1,75 @@
+<import src="../../wxParse/wxParse"></import>
+<view class="top-title">
+<view class="t-t-t">
+  <view>{{ info.articletitle }}</view>
+  <view>{{ info.createDate }}</view>
+</view>
+<template is="wxParse" data="{{ wxParseData: wpContent.nodes }}"></template>
+<!--<view class="info-content">{{ info.content }}</view>-->
+<!--<view class="info-img">-->
+  <!--<image catchtap="showImg" data-inindex="{{ imgIndex }}" wx:for="{{ info.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}" wx:key="*12"></image>-->
+<!--</view>-->
+</view>
+
+<view class="vote-wrap">
+<view class="vote" wx:if="{{ oIndex < 3 }}" wx:for="{{ info.voteoptionList }}" wx:key="*790" wx:for-index="oIndex" wx:for-item="oItem">
+  <view class="vote-t">{{ oItem.voteoptionid }}</view>
+  <view class="vote-s">
+    <view class="{{ oIndex == 0 ? 'vote-agree' : oIndex == 1 ? 'vote-oppose' : 'vote-abstention' }}" style="width: {{ oItem.number != 0 ? ((586 * (oItem.number || 0)) / ((info.voteoptionList[0].number || 0) * 1 + (info.voteoptionList[1].number || 0) * 1 + (info.voteoptionList[2].number || 0) * 1))+ 'rpx' : '0px'}};"></view>
+  </view>
+  <view class="vote-r">{{ oItem.number || 0 }}</view>
+</view>
+<!--<view class="vote">-->
+  <!--<view class="vote-t">支持票</view>-->
+  <!--<view class="vote-s">-->
+    <!--<view class="vote-agree" style="width: {{ info.agree != 0 ? ((586 * info.agree) / (info.agree * 1 + info.oppose * 1 + info.abstention))+ 'rpx' : '0px'}};"></view>-->
+  <!--</view>-->
+  <!--<view class="vote-r">{{ info.agree }}</view>-->
+<!--</view>-->
+<!--<view class="vote">-->
+  <!--<view class="vote-t">反对票</view>-->
+  <!--<view class="vote-s">-->
+    <!--<view class="vote-oppose" style="width: {{ info.oppose != 0 ?(586 * info.oppose) / (info.agree * 1 + info.oppose * 1 + info.abstention)+ 'rpx' : '0px' }};"></view>-->
+  <!--</view>-->
+  <!--<view class="vote-r">{{ info.oppose }}</view>-->
+<!--</view>-->
+<!--<view class="vote">-->
+  <!--<view class="vote-t">弃票</view>-->
+  <!--<view class="vote-s">-->
+    <!--<view class="vote-abstention" style="width: {{ info.abstention != 0 ?(586 * info.abstention) / (info.agree * 1 + info.oppose * 1 + info.abstention)+ 'rpx' : '0px'}};"></view>-->
+  <!--</view>-->
+  <!--<view class="vote-r">{{ info.abstention }}</view>-->
+<!--</view>-->
+</view>
+
+<view class="vote-type">
+  <view catchtap="userVote" data-show="{{ info.voteoptionList[0].voteoptionid }}" data-id="{{ info.voteoptionList[0].id }}" data-type="agree">{{ info.voteoptionList[0].voteoptionid }}</view>
+  <view catchtap="userVote" data-show="{{ info.voteoptionList[1].voteoptionid }}" data-id="{{ info.voteoptionList[1].id }}" data-type="oppose">{{ info.voteoptionList[1].voteoptionid }}</view>
+  <view catchtap="userVote" data-show="{{ info.voteoptionList[2].voteoptionid }}" data-id="{{ info.voteoptionList[2].id }}" data-type="abstention">{{ info.voteoptionList[2].voteoptionid }}</view>
+</view>
+
+<view class="bottom">
+<view class="b-wrap" wx:for="{{ commentArr }}" wx:key="*76">
+  <image src="{{ item.src || '../../images/user.png' }}"></image>
+  <view class="b-c">
+    <view class="b-name">{{ item.username }}</view>
+    <view class="b-content">{{ item.content }}</view>
+    <view class="b-time">
+      <view>{{ item.time }}</view>
+      <view wx:if="{{ item.userid != user.id || !!item.numberReply }}" catchtap="userReply" data-index="{{ index }}" class="b-t-r">{{ item.numberReply || '我要' }}回复</view>
+      <view wx:if="{{ item.userid == user.id }}" catchtap="userDel" data-index="{{ index }}" class="b-t-r">删除</view>
+    </view>
+  </view>
+  <view catchtap="diazan" data-id="{{ item.id }}" data-index="{{ index }}" class="iconfont icon-dz {{ item.islike == 1 ? 'has-zan' : ''}}">{{ item.numberLike || 0 }}</view>
+</view>
+<view class="tac f30 c999" wx:if="{{ commentArr.length < 1 }}">还没有人评论哦~，您快来评论吧</view>
+<view class="zanwei"></view>
+</view>
+<image mode="widthFix" class="bg" src="../../images/od-bg.png"></image>
+<view class="bottom-input">
+<input  bindconfirm="send" confirm-type="send" bindfocus="getIn" bindblur="getOut" placeholder-class="input-holder" focus="{{ focus }}" placeholder="{{ replyText }}" data-type="reply" bindinput="inputValue" value="{{ reply }}"/>
+<view class="{{ focus || inputIn ? 'send-active':'' }}" catchtap="send">发送</view>
+</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

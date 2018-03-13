@@ -1,0 +1,27 @@
+<view class="login">
+  <view class="user-wrap">
+    <image class="user-bg" src="{{ userInfo.avatarUrl }}"></image>
+    <view>{{ userInfo.nickName }}</view>
+  </view>
+  <!--<view class="login-bg-s">-->
+    <!--<image class="imgone" mode="widthFix" src="../../images/user-bg-1.png"></image>-->
+    <!--<image class="imgtwo" mode="widthFix" src="../../images/user-bg-2.png"></image>-->
+  <!--</view>-->
+  <view class="container">
+    <view class="wave"></view>
+    <view class="wave1"></view>
+    <view class="wave2"></view>
+    <!--<view class="wave3"></view>-->
+  </view>
+  <!--<image class="login-bg" mode="widthFix" src="../../images/user-bg.png"></image>-->
+</view>
+<view class="user-operation arrow" data-url="{{ item.url }}" catchtap="operation" wx:for="{{ operationArr }}" wx:key="*90">
+  <view class="iconfont {{ item.c }}"></view>
+  <view class="u-p-t">{{ item.t }}</view>
+</view>
+<view class="zhanwei"></view>
+<view catchtap="loginOut" class="login-out">退出登陆</view>
+<view class="base-line"></view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

@@ -1,0 +1,7 @@
+<view class="order-wrap arrow" wx:for="{{ orderArr }}" catchtap="goDetail" data-id="{{ item.id }}" wx:key="*98">
+  {{ item.ordertitle }}
+</view>
+<view wx:if="{{ orderArr.length < 1 || !orderArr }}" class="tac f30 c999">--- 您还没有进行过采购哟 ---</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

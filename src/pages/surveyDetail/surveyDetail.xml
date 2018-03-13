@@ -1,0 +1,20 @@
+<view class="detail-wrap" wx:for="{{ detailArr.content }}" wx:key="*78">
+  <image mode="widthFix" src="{{ item.commodityimage }}"></image>
+  <view class="d-c">
+    <view>{{ item.commodityname }}</view>
+    <view>{{ item.commodityweight }}</view>
+    <view>￥　{{ item.commodityprice }}</view>
+  </view>
+  <view class="d-a">
+    <view class="d-a-d" catchtap="shopChoose" data-type="del" data-index="{{ index }}" wx:if="{{ item.account > 0 }}">-</view>
+    <view class="d-a-c">{{ item.account || 0 }}</view>
+    <view class="d-a-a" catchtap="shopChoose" data-type="add" data-index="{{ index }}">+</view>
+  </view>
+</view>
+<view class="zanwei"></view>
+<view class="d-b">
+<view catchtap="goConfirm">确认(￥{{ allPrice || 0 }})</view>
+</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

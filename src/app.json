@@ -1,0 +1,86 @@
+{
+//  群信息小程序页面分布
+  "pages": [
+    "pages/login/login", // 登陆页
+    "pages/index/index", // 首页
+    "pages/indexDetailReply/indexDetailReply", // 首页详情回复
+
+    "pages/opinionDetail/opinionDetail", // 意见区详情
+    "pages/user/user", // 我的
+    "pages/userDynamic/userDynamic", // 用户动态
+
+    "pages/indexDetail/indexDetail", // 首页详情
+    "pages/survey/survey", // 调查区
+    "pages/surveyConfirm/surveyConfirm", // 订单确认
+    "pages/surveyDetail/surveyDetail", // 调查详情
+    "pages/feedback/feedback", // 反馈页面
+    "pages/senderOrder/senderOrder", // 填写邮箱
+    "pages/userOrderDetail/userOrderDetail", //采购单详情
+    "pages/userOrder/userOrder", // 我的采购单
+    "pages/opinion/opinion", // 意见区
+    "pages/register/register" // 注册
+    // Dont remove this comment
+  ],
+  // Window configuration
+  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#window
+  "window": {
+    // 类型：HexColor；默认值：#000000
+    // 导航栏背景颜色，如"#000000"
+    "navigationBarBackgroundColor": "#4892ff",
+    // 类型：String；默认值：white
+    // 导航栏标题颜色，仅支持 black/white
+    "navigationBarTextStyle": "white",
+    // 类型：String；默认值：无
+    // 导航栏标题文字内容
+    "navigationBarTitleText": "",
+    // 类型：HexColor；默认值：#ffffff
+    // 窗口的背景色
+    "backgroundColor": "#4892ff",
+    // 类型：String；默认值：dark
+    // 下拉背景字体、loading 图的样式，仅支持 dark/light
+    "backgroundTextStyle": "light",
+    // 类型：Boolean；默认值：false
+    // 是否开启下拉刷新，详见页面相关事件处理函数。
+    // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html?t=1476197491005#页面相关事件处理函数
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4691ff",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_hl.png"
+      },
+      {
+        "text": "调查区",
+        "pagePath": "pages/survey/survey",
+        "iconPath": "images/survey.png",
+        "selectedIconPath": "images/survey_hl.png"
+      },
+      {
+        "text": "意见区",
+        "pagePath": "pages/opinion/opinion",
+        "iconPath": "images/opinion.png",
+        "selectedIconPath": "images/opinion_hl.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/user/user",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user_hl.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  // Debug log to console
+  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#debug
+  "debug": true
+}

@@ -1,0 +1,145 @@
+
+.top-title {
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #eee;
+  .t-t-t {
+    display: flex;
+    line-height: 70rpx;
+    justify-content: space-between;
+    align-items: center;
+    view:nth-child(1) {
+      font-size: 32rpx;
+      color: #333;
+      font-weight: 700;
+    }
+    view:nth-child(2) {
+      font-size: 24rpx;
+      color: #999;
+    }
+  }
+  .info-content {
+    line-height: 50rpx;
+    color: #333;
+    font-size: 24rpx;
+  }
+  .info-img {
+    display: flex;
+    flex-wrap: wrap;
+    image {
+      margin: 4rpx;
+      width: 223rpx;
+      height: 168rpx;
+    }
+  }
+}
+
+.bottom {
+  //padding: 0 20rpx;
+  .b-wrap {
+    display: flex;
+    padding: 20rpx;
+    align-items: center;
+    min-height: 200rpx;
+    position: relative;
+    border-bottom: 1rpx solid #eee;
+    image {
+      position: absolute;
+      top: 20rpx;
+      left: 20rpx;
+      width: 83rpx;
+      height: 83rpx;
+      border-radius: 50%;
+    }
+    .b-c {
+      flex: 1;
+      margin-left: 100rpx;
+      min-height: 180rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    view {
+      font-size: 24rpx;
+      color: #333;
+    }
+    .b-content {
+      margin: 10rpx 0;
+    }
+    .b-time {
+      display: flex;
+      font-size: 20rpx;
+      align-items: center;
+      .b-t-r {
+        margin-left: 10rpx;
+        background-color: #eee;
+        border-radius: 40rpx;
+        line-height: 40rpx;
+        padding: 0 14rpx;
+        color: #4691ff;
+        text-align: center;
+      }
+    }
+    .icon-dz {
+      display: flex;
+      align-items: center;
+      color: #999;
+      padding: 20rpx;
+      padding-right: 0;
+    }
+    .icon-dz::before {
+      font-size: 30rpx;
+      margin-right: 10rpx;
+    }
+    .has-zan {
+      color: #4691ff;
+    }
+  }
+  .zanwei {
+    height: 120rpx;
+  }
+}
+
+.bottom-input {
+  position: fixed;
+  width: 100%;
+  height: 120rpx;
+  bottom: 0;
+  left: 0;
+  background-color: #f7f7f7;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  .input-holder {
+    font-size: 26rpx;
+    color: #333;
+  }
+  input {
+    border: 1rpx solid #b5b5b5;
+    font-size: 26rpx;
+    color: #333;
+    border-radius: 10rpx;
+    background-color: #fff;
+    line-height: 80rpx;
+    height: 80rpx;
+    padding-left: 15rpx;
+    flex: 1;
+  }
+  view {
+    line-height: 82rpx;
+    height: 82rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #999;
+    padding: 0 20rpx;
+    border: 1rpx solid #eee;
+    border-radius: 10rpx;
+    margin-left: 10rpx;
+    background-color: #fff;
+    transition: all 0.5s;
+  }
+  .send-active {
+    background-color: #4691ff;
+    color: #fff;
+  }
+}

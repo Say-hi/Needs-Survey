@@ -1,0 +1,8 @@
+<!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>
+<view class="survey-wrap {{ item.isbuy == 1 ? 'has-choose' : '' }}" data-name="{{ item.ordertitle }}" data-choose="{{ item.isbuy == 1 ? 'choose' : 'no' }}" catchtap="goDetail" data-id="{{ item.id }}" wx:for="{{ surveyArr }}" wx:key="*5">
+  <view>{{ item.ordertitle }}</view>
+  <view>{{ item.begindate }}---{{ item.enddate }}</view>
+</view>
+<view class="base-line"></view>

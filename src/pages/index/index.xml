@@ -1,0 +1,38 @@
+<import src="../../wxParse/wxParse"></import>
+<view class="swiper-wrap">
+  <swiper bindchange="swiperchange" circular='true'>
+    <swiper-item wx:for="{{imgUrls}}" wx:key="*1">
+      <image mode="aspectFill" src="{{item.href}}" class="slide-image"/>
+    </swiper-item>
+  </swiper>
+  <view class="swiper-dot">
+    <view wx:for="{{imgUrls}}" class="{{ current == index ? 'active': '' }}" wx:key="*2"></view>
+  </view>
+</view>
+<view class="top-title">最新消息</view>
+<!--<view wx:if="{{ item.articletypeid == 1 }}" class="info-wrap" catchtap="goIndexDetail" data-id="{{ item.id }}" wx:for="{{ infoArr }}" wx:key="*3">-->
+<view class="info-wrap" catchtap="goIndexDetail" data-id="{{ item.id }}" wx:for="{{ infoArr }}" wx:key="*3">
+  <view class="info-user">
+    <image src="{{ item.img || '../../images/user.png' }}"></image>
+    <view>
+      <view>{{ item.name || '管理员' }}</view>
+      <view>{{ item.createDate }}</view>
+    </view>
+  </view>
+  <view>
+    <template is="wxParse" data="{{ wxParseData: item.node.nodes }}"></template>
+  </view>
+  <!--<view class="info-content">{{ item.content }}</view>-->
+  <!--<view class="info-img">-->
+    <!--<image catchtap="showImg" data-outindex="{{ index }}" data-inindex="{{ imgIndex }}" wx:for="{{ item.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}" wx:key="*12"></image>-->
+  <!--</view>-->
+  <view class="info-comment">
+    <view>共{{ item.numberComment || 0 }}条评论</view>
+    <view catchtap="diazan" data-index="{{ index }}" data-id="{{ item.id }}" class="iconfont icon-dianzan11 {{ item.isLike == 1 ? 'has-zan':'' }}">{{ item.numberLike || 0 }}</view>
+  </view>
+</view>
+<view wx:if="{{ infoArr.length < 1 || !infoArr }}" class="tac f30 c999">--- 暂无最新消息 ---</view>
+<view class="base-line"></view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

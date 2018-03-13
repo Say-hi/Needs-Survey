@@ -1,0 +1,6 @@
+<view class="send-top">请写下邮箱，采购单会以表格形式发送到您的邮箱</view>
+<input placeholder-class="input-holder" bindinput="inputValue" data-type="email" placeholder="请您输入邮箱"/>
+<view class="send-btn" catchtap="sendEmail">发送</view>
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

@@ -1,0 +1,47 @@
+<import src="../../wxParse/wxParse"></import>
+<view class='dynamic-top'>
+  <view catchtap="topChooses" data-type="1" class="{{ topChoose == 1 ? 'active' : '' }}">评论</view>
+  <view catchtap="topChooses" data-type="2" class="{{ topChoose == 2 ? 'active' : '' }}">回复</view>
+</view>
+<view class="zanwei"></view>
+<view wx:if="{{ topChoose == 1 }}" class="info-wrap" catchtap="goIndexDetail" data-id="{{ item.articlesId }}" wx:for="{{ infoArr }}" wx:key="*343">
+<view class="info-user">
+  <image src="{{ item.img || '../../images/user.png' }}"></image>
+  <view>
+    <view>{{ item.name || '管理员' }}</view>
+    <view>{{ item.createDate }}</view>
+  </view>
+</view>
+<!--<view class="info-content">{{ item.content }}</view>-->
+<template is="wxParse" data="{{ wxParseData: item.node.nodes }}"></template>
+<!--<view class="info-img">-->
+  <!--<image catchtap="showImg" data-outindex="{{ index }}" data-inindex="{{ imgIndex }}" wx:for="{{ item.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}" wx:key="*12"></image>-->
+<!--</view>-->
+<!--<view class="info-comment">-->
+  <!--<view>共{{ item.comment || 0 }}条评论</view>-->
+  <!--<view catchtap="diazan" data-index="{{ index }}" data-id="{{ item.id }}" class="iconfont icon-dianzan11 {{ item.zan ? 'has-zan':'' }}">{{ item.star }}</view>-->
+<!--</view>-->
+</view>
+<view class="tac f30 c999" wx:if="{{ topChoose == 1 && infoArr.length < 1 }}">你还没有发表过评论哟</view>
+<view wx:if="{{ topChoose == 2 }}" class="info-wrap" catchtap="goIndexDetail" data-id="{{ item.id }}" wx:for="{{ infoArr2 }}" wx:key="*344">
+<view class="info-user">
+  <image src="{{ item.img || '../../images/user.png' }}"></image>
+  <view>
+    <view>{{ item.username }}</view>
+    <view>{{ item.createDate }}</view>
+  </view>
+</view>
+<view class="info-content">回复我:　{{ item.content }}</view>
+<!--<view class="info-img">-->
+  <!--<image catchtap="showImg" data-outindex="{{ index }}" data-inindex="{{ imgIndex }}" wx:for="{{ item.imgArr }}" mode="aspectFill" wx:for-index="imgIndex" wx:for-item="imgItem" src="{{ imgItem }}" wx:key="*12"></image>-->
+<!--</view>-->
+<!--<view class="info-comment">-->
+  <!--<view>共{{ item.comment || 0 }}条评论</view>-->
+  <!--<view catchtap="diazan" data-index="{{ index }}" data-id="{{ item.id }}" class="iconfont icon-dianzan11 {{ item.zan ? 'has-zan':'' }}">{{ item.star }}</view>-->
+<!--</view>-->
+</view>
+<view class="tac f30 c999" wx:if="{{ topChoose == 2 && infoArr2.length < 1 }}">还没有人回复您哦</view>
+
+        <!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>
